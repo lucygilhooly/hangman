@@ -16,6 +16,7 @@ public class hangmanUtil {
         words.add("spatula");
     }
 
+
     //add a method which will randomly choose a word
     public static String unknownWord() {
         return words.get( RANDOM.nextInt( words.size()));
