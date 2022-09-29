@@ -19,10 +19,11 @@ public class HangmanGame {
         System.out.println("Lets play Hangman!!!");
         System.out.println("what is your name?");
         String name = scanner.nextLine();
-        System.out.println("Great!");
-        System.out.println("Welcome to my Hangman game " + name + " Lets Begin!!");
+        System.out.println("Welcome to my Hangman game " + name );
+        System.out.println("Lets Begin!!");
         convertToUnderscores();
-        System.out.println("your chosen word is : " + guesses + " you have " + lives + " lives, use them wisely!!");
+        System.out.println("your chosen word is : " + guesses + " & you have " + lives + " lives, use them wisely!!");
+        System.out.println("take a guess");
 
         while (gameActive) {
 
@@ -30,6 +31,7 @@ public class HangmanGame {
             String guess = "" + guessAsChar;
             if (unknownWord.contains(guess)) {
                 System.out.println("well done " + guess + " is in the word! You have " + lives + " lives remaining!");
+                System.out.println("take another guess!");
                 for (int i = 0; i < unknownWord.length(); i++) {
                     char ch = unknownWord.charAt(i);
                     if (ch == guessAsChar) {
@@ -45,7 +47,7 @@ public class HangmanGame {
                 gameActive = false;
                 System.out.println("Well Done! you've won!!");
             }
-            if (!alreadyGuessed.contains(guessAsChar)) {
+            if (!alreadyGuessed.contains(guessAsChar) && gameActive ) {
                 alreadyGuessed.add(guessAsChar);
                 System.out.println("The characters you have already guessed are: " + alreadyGuessed);
             }
@@ -64,7 +66,6 @@ public class HangmanGame {
     }
     Character readUserGuess() {
         while (true) {
-            System.out.println("take a guess");
             String guess = scanner.nextLine();
             if (guess.equals("") || guess.length() > 1) {
                 System.out.println("Please enter a valid guess.");
